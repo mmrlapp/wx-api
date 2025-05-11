@@ -9,7 +9,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "bun run build.ts",
-    "upload": "npm run build && npm publish"
+    "upload": "bun run build && npm publish"
   },
   "keywords": [],
   "author": "",
