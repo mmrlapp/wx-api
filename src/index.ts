@@ -1,0 +1,1 @@
+console.log("This is a test for Bun's TypeScript support.");

@@ -1,0 +1,19 @@
+import type { FileInputInterface } from "./FileInputInterface";
+import type { FileInterface } from "./FileInterface";
+import type { ModuleInterface } from "./ModuleInterface";
+
+export {};
+
+export type ModuleInterfaceToken = `$${string}`;
+export type FileInterfaceToken = `$${string}File`;
+export type FileInputInterfaceToken = `$${string}FileInputStream`;
+
+export type MimeType = `${string}/${string}`;
+
+declare global {
+  interface Window {
+    [key: ModuleInterfaceToken]: ModuleInterface;
+    [key: FileInterfaceToken]: FileInterface;
+    [key: FileInputInterfaceToken]: FileInputInterface;
+  }
+}
