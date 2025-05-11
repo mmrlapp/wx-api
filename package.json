@@ -1,6 +1,6 @@
 {
   "name": "webuix",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "A library to make your life easier when working with MMRL's WebUI",
   "source": "src/index.ts",
@@ -15,7 +15,9 @@
   "author": "",
   "license": "GPL-3.0-only",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.3.0",
+    "tsc": "^2.0.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

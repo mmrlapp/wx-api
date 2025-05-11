@@ -1,1 +1,2 @@
-console.log("This is a test for Bun's TypeScript support.");
+export { wrapToReadableStream } from "./wrappers/wrapToReadableStream";
+export { wrapInputStream } from "./wrappers/wrapInputStream";
