@@ -1,7 +1,11 @@
 import type { CustomWXEvent } from "../classes/CustomWXEvent";
 
-export type WXEventNativeType = "WX_ON_BACK" | "WX_ON_RESUME" | "WX_ON_PAUSE";
-export type WXEventType = "back" | "resume" | "pause";
+export type WXEventNativeType =
+  | "WX_ON_BACK"
+  | "WX_ON_RESUME"
+  | "WX_ON_REFRESH"
+  | "WX_ON_PAUSE";
+export type WXEventType = "back" | "resume" | "refresh" | "pause";
 export type WXEventDetail = {
   type: WXEventNativeType;
 };

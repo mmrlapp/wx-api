@@ -12,6 +12,7 @@ export class WXEvent {
   private static _eventTypes: Record<WXEventNativeType, WXEventType> = {
     WX_ON_BACK: "back",
     WX_ON_RESUME: "resume",
+    WX_ON_REFRESH: "refresh",
     WX_ON_PAUSE: "pause",
   };
 
