@@ -1,6 +1,6 @@
 export { wrapToReadableStream } from "./wrappers/wrapToReadableStream";
 export { wrapInputStream } from "./wrappers/wrapInputStream";
-export { WXEvent } from "./classes/WXEvent";
+export { WXEventHandler } from "./classes/WXEventHandler";
 export { CustomWXEvent } from "./classes/CustomWXEvent";
 export type {
   WXEventType,

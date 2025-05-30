@@ -6,21 +6,21 @@ import type {
 } from "../types/WXEvent";
 import { CustomWXEvent } from "./CustomWXEvent";
 
-export class WXEvent {
-  private static _initialized = false;
-  private static _handlers = new WeakMap();
-  private static _eventTypes: Record<WXEventNativeType, WXEventType> = {
+export class WXEventHandler {
+  private _initialized = false;
+  private _handlers = new WeakMap();
+  private _eventTypes: Record<WXEventNativeType, WXEventType> = {
     WX_ON_BACK: "back",
     WX_ON_RESUME: "resume",
     WX_ON_REFRESH: "refresh",
     WX_ON_PAUSE: "pause",
   };
 
-  static get eventTypes() {
+  public get eventTypes() {
     return this._eventTypes;
   }
 
-  static initialize() {
+  public constructor() {
     if (this._initialized) return;
     this._initialized = true;
 
@@ -42,7 +42,7 @@ export class WXEvent {
     });
   }
 
-  private static _dispatch(
+  private _dispatch(
     element: Window | Element,
     type: WXEventType,
     detail: WXEventDetail
@@ -52,12 +52,12 @@ export class WXEvent {
     element.dispatchEvent(event);
   }
 
-  static on(
+  public on(
     element: Window | Element,
     type: WXEventType,
     handler: WXEventListenerOrWXEventListenerObject
   ) {
-    if (!this._initialized) this.initialize();
+    if (!this._initialized) new WXEventHandler();
 
     const wrapper: WXEventListenerOrWXEventListenerObject = (event) => {
       if (!(event instanceof CustomWXEvent)) {
@@ -89,7 +89,7 @@ export class WXEvent {
     return () => this.off(element, type, handler);
   }
 
-  static off(
+  public off(
     element: Window | Element,
     type: WXEventType,
     handler: WXEventListenerOrWXEventListenerObject
