@@ -1,6 +1,7 @@
 import type {
   WXEventDetail,
   WXEventListenerOrWXEventListenerObject,
+  WXEventMap,
   WXEventNativeType,
   WXEventType,
 } from "../types/WXEvent";
@@ -14,6 +15,8 @@ export class WXEventHandler {
     WX_ON_RESUME: "resume",
     WX_ON_REFRESH: "refresh",
     WX_ON_PAUSE: "pause",
+    WX_ON_KEYBOARD: "keyboard",
+    WX_ON_INSETS: "insets",
   };
 
   public get eventTypes() {
@@ -52,14 +55,16 @@ export class WXEventHandler {
     element.dispatchEvent(event);
   }
 
-  public on(
+  public on<K extends keyof WXEventMap>(
     element: Window | Element,
-    type: WXEventType,
-    handler: WXEventListenerOrWXEventListenerObject
+    type: K,
+    handler: WXEventListenerOrWXEventListenerObject<WXEventMap[K]>
   ) {
     if (!this._initialized) new WXEventHandler();
 
-    const wrapper: WXEventListenerOrWXEventListenerObject = (event) => {
+    const wrapper: WXEventListenerOrWXEventListenerObject<WXEventMap[K]> = (
+      event
+    ) => {
       if (!(event instanceof CustomWXEvent)) {
         console.warn("[WXEvent] Event is not a CustomWXEvent:", event);
         return;
@@ -93,7 +98,7 @@ export class WXEventHandler {
     element: Window | Element,
     type: WXEventType,
     handler: WXEventListenerOrWXEventListenerObject
-  ) {
+  ): void {
     const elementHandlers = this._handlers.get(element);
     if (!elementHandlers?.has(type)) return;
 

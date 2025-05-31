@@ -1,6 +1,6 @@
 import type { WXEventDetail, WXEventType } from "../types/WXEvent";
 
-export class CustomWXEvent extends CustomEvent<WXEventDetail> {
+export class CustomWXEvent<T = any> extends CustomEvent<WXEventDetail<T>> {
   private _wxOrigin?: string | undefined;
 
   get wxOrigin() {

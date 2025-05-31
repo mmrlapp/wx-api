@@ -4,17 +4,57 @@ export type WXEventNativeType =
   | "WX_ON_BACK"
   | "WX_ON_RESUME"
   | "WX_ON_REFRESH"
-  | "WX_ON_PAUSE";
-export type WXEventType = "back" | "resume" | "refresh" | "pause";
-export type WXEventDetail = {
+  | "WX_ON_PAUSE"
+  | "WX_ON_KEYBOARD"
+  | "WX_ON_INSETS";
+
+export type WXEventType =
+  | "back"
+  | "resume"
+  | "refresh"
+  | "pause"
+  | "keyboard"
+  | "insets";
+
+export type WXEventDetail<T = any> = {
   type: WXEventNativeType;
+  data?: T;
 };
-export interface WXEventListener extends EventListener {
-  (evt: CustomWXEvent): void;
+
+export interface WXEventListener<T = any> extends EventListener {
+  (evt: CustomWXEvent<T>): void;
 }
-export interface WXEventListenerObject extends EventListenerObject {
-  handleEvent(object: CustomWXEvent): void;
+
+export interface WXEventListenerObject<T = any> extends EventListenerObject {
+  handleEvent(object: CustomWXEvent<T>): void;
 }
-export type WXEventListenerOrWXEventListenerObject =
-  | WXEventListener
-  | WXEventListenerObject;
+
+export type WXEventListenerOrWXEventListenerObject<T = any> =
+  | WXEventListener<T>
+  | WXEventListenerObject<T>;
+
+export interface WXRefreshEvent extends Event {
+  isRefreshing: boolean;
+  isShown: boolean;
+  isEnabled: boolean;
+}
+
+export interface WXInsetsEvent extends Event {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+}
+
+export interface WXKeyboardEvent extends Event {
+  visible: boolean;
+}
+
+export interface WXEventMap extends Record<WXEventType, Event | null> {
+  back: null;
+  resume: null;
+  refresh: WXRefreshEvent;
+  pause: null;
+  keyboard: WXKeyboardEvent;
+  insets: WXInsetsEvent;
+}
