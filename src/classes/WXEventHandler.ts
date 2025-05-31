@@ -5,7 +5,7 @@ import type {
   WXEventNativeType,
   WXEventType,
 } from "../types/WXEvent";
-import { CustomWXEvent } from "./CustomWXEvent";
+import { WXEvent } from "./WXEvent";
 
 export class WXEventHandler {
   private _initialized = false;
@@ -50,7 +50,8 @@ export class WXEventHandler {
     type: WXEventType,
     detail: WXEventDetail
   ) {
-    const event = new CustomWXEvent(type, detail);
+    const event = new WXEvent(type);
+    event.wx = detail.data;
     event.wxOrigin = "system";
     element.dispatchEvent(event);
   }
@@ -65,8 +66,8 @@ export class WXEventHandler {
     const wrapper: WXEventListenerOrWXEventListenerObject<WXEventMap[K]> = (
       event
     ) => {
-      if (!(event instanceof CustomWXEvent)) {
-        console.warn("[WXEvent] Event is not a CustomWXEvent:", event);
+      if (!(event instanceof WXEvent)) {
+        console.warn("[WXEvent] Event is not a WXEvent:", event);
         return;
       }
 

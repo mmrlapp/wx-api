@@ -1,4 +1,4 @@
-import type { CustomWXEvent } from "../classes/CustomWXEvent";
+import type { WXEvent } from "../classes/WXEvent";
 
 export type WXEventNativeType =
   | "WX_ON_BACK"
@@ -22,11 +22,11 @@ export type WXEventDetail<T = any> = {
 };
 
 export interface WXEventListener<T = any> extends EventListener {
-  (evt: CustomWXEvent<T>): void;
+  (evt: WXEvent<T>): void;
 }
 
 export interface WXEventListenerObject<T = any> extends EventListenerObject {
-  handleEvent(object: CustomWXEvent<T>): void;
+  handleEvent(object: WXEvent<T>): void;
 }
 
 export type WXEventListenerOrWXEventListenerObject<T = any> =
