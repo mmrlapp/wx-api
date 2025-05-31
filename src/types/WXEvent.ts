@@ -1,5 +1,9 @@
 import type { WXEvent } from "../classes/WXEvent";
 
+export interface WXEvenHandlerOptions {
+  cordova: boolean;
+}
+
 export type WXEventNativeType =
   | "WX_ON_BACK"
   | "WX_ON_RESUME"
@@ -10,6 +14,7 @@ export type WXEventNativeType =
 
 export type WXEventType =
   | "back"
+  | "backbutton" // Cordova compatibility
   | "resume"
   | "refresh"
   | "pause"

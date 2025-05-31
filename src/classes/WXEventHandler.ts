@@ -1,4 +1,5 @@
 import type {
+  WXEvenHandlerOptions,
   WXEventDetail,
   WXEventListenerOrWXEventListenerObject,
   WXEventMap,
@@ -7,25 +8,31 @@ import type {
 } from "../types/WXEvent";
 import { WXEvent } from "./WXEvent";
 
+const defaultOptions: WXEvenHandlerOptions = {
+  cordova: false,
+};
+
 export class WXEventHandler {
   private _initialized = false;
   private _handlers = new WeakMap();
-  private _eventTypes: Record<WXEventNativeType, WXEventType> = {
-    WX_ON_BACK: "back",
-    WX_ON_RESUME: "resume",
-    WX_ON_REFRESH: "refresh",
-    WX_ON_PAUSE: "pause",
-    WX_ON_KEYBOARD: "keyboard",
-    WX_ON_INSETS: "insets",
-  };
+  private _eventTypes!: Record<WXEventNativeType, WXEventType>;
 
   public get eventTypes() {
     return this._eventTypes;
   }
 
-  public constructor() {
+  public constructor(options: WXEvenHandlerOptions = defaultOptions) {
     if (this._initialized) return;
     this._initialized = true;
+
+    this._eventTypes = {
+      WX_ON_BACK: options.cordova ? "backbutton" : "back",
+      WX_ON_RESUME: "resume",
+      WX_ON_REFRESH: "refresh",
+      WX_ON_PAUSE: "pause",
+      WX_ON_KEYBOARD: "keyboard",
+      WX_ON_INSETS: "insets",
+    };
 
     window.addEventListener("message", (event) => {
       try {
