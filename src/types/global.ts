@@ -1,5 +1,6 @@
 import type { FileInputInterface } from "./FileInputInterface";
 import type { FileInterface } from "./FileInterface";
+import type { FileOutputInterface } from "./FileOutputInterface";
 import type { ModuleInterface } from "./ModuleInterface";
 
 export {};
@@ -7,6 +8,7 @@ export {};
 export type ModuleInterfaceToken = `$${string}`;
 export type FileInterfaceToken = `$${string}File`;
 export type FileInputInterfaceToken = `$${string}FileInputStream`;
+export type FileOutputInterfaceToken = `$${string}FileOutputStream`;
 
 export type MimeType = `${string}/${string}`;
 
@@ -15,5 +17,6 @@ declare global {
     [key: ModuleInterfaceToken]: ModuleInterface;
     [key: FileInterfaceToken]: FileInterface;
     [key: FileInputInterfaceToken]: FileInputInterface;
+    [key: FileOutputInterfaceToken]: FileOutputInterface;
   }
 }
