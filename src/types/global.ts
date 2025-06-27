@@ -1,6 +1,8 @@
+import type { ApplicationInterface } from "./ApplicationInterface";
 import type { FileInputInterface } from "./FileInputInterface";
 import type { FileInterface } from "./FileInterface";
 import type { FileOutputInterface } from "./FileOutputInterface";
+import type { IntentInterface } from "./IntentInterface";
 import type { ModuleInterface } from "./ModuleInterface";
 
 export {};
@@ -14,6 +16,8 @@ export type MimeType = `${string}/${string}`;
 
 declare global {
   interface Window {
+    webui: ApplicationInterface;
+    [`$intent`]: IntentInterface;
     [key: ModuleInterfaceToken]: ModuleInterface;
     [key: FileInterfaceToken]: FileInterface;
     [key: FileInputInterfaceToken]: FileInputInterface;
