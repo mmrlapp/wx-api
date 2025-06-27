@@ -1,6 +1,6 @@
 {
   "name": "webuix",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "type": "module",
   "description": "A library to make your life easier when working with MMRL's WebUI",
   "source": "src/index.ts",
