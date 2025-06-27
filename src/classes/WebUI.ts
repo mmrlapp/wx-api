@@ -9,7 +9,7 @@ import type { Intent } from "./Intent";
 export class WebUI {
   private _interface: ApplicationInterface | null = null;
 
-  constructor() {
+  public constructor() {
     if (typeof window === "undefined" || !window["webui"]) {
       console.warn(
         "window['webui'] is not defined. WebUI functionality may be limited."
@@ -23,7 +23,7 @@ export class WebUI {
    * Exits the native application.
    * Corresponds to `ApplicationInterface.exit()`.
    */
-  exit() {
+  public exit() {
     if (this._interface && typeof this._interface.exit === "function") {
       this._interface.exit();
     } else {
@@ -37,7 +37,7 @@ export class WebUI {
    * Corresponds to `ApplicationInterface.setRefreshing(state)`.
    * @param {boolean} state True to show refreshing indicator, false to hide.
    */
-  setRefreshing(state: boolean) {
+  public setRefreshing(state: boolean) {
     if (
       this._interface &&
       typeof this._interface.setRefreshing === "function"
@@ -55,7 +55,7 @@ export class WebUI {
    * Corresponds to `ApplicationInterface.currentRootManager` getter.
    * @returns {Object | null} An object with packageName, versionName, and versionCode, or null if unavailable.
    */
-  get currentRootManager(): WXApp | null {
+  public get currentRootManager(): WXApp | null {
     if (
       this._interface &&
       typeof this._interface.getCurrentRootManager !== "undefined"
@@ -74,7 +74,7 @@ export class WebUI {
    * Corresponds to `ApplicationInterface.currentApplication` getter.
    * @returns {Object | null} An object with packageName, versionName, and versionCode, or null if unavailable.
    */
-  get currentApplication(): WXApp | null {
+  public get currentApplication(): WXApp | null {
     if (
       this._interface &&
       typeof this._interface.getCurrentApplication !== "undefined"
@@ -94,7 +94,7 @@ export class WebUI {
    * @param {string} packageName The package name of the application.
    * @returns {Object | null} An object with packageName, versionName, and versionCode, or null if unavailable/error.
    */
-  getApplication(packageName: string): WXApp | null {
+  public getApplication(packageName: string): WXApp | null {
     if (
       this._interface &&
       typeof this._interface.getApplication === "function"
@@ -113,7 +113,7 @@ export class WebUI {
    * Corresponds to `ApplicationInterface.openFile(i: IntentData?)`.
    * @param {Intent} intent An Intent object (from the previously defined Intent class) containing file selection details.
    */
-  openFile(intent: Intent) {
+  public openFile(intent: Intent) {
     if (this._interface && typeof this._interface.openFile === "function") {
       this._interface.openFile(intent.getParsedIntent());
     } else {
@@ -126,7 +126,7 @@ export class WebUI {
    * Corresponds to `ApplicationInterface.startActivity(i: IntentData)`.
    * @param {Intent} intent An Intent object (from the previously defined Intent class) describing the activity to start.
    */
-  startActivity(intent: Intent) {
+  public startActivity(intent: Intent) {
     if (
       this._interface &&
       typeof this._interface.startActivity === "function"
