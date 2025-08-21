@@ -1,4 +1,6 @@
 /**
+ * @internal
+ *
  * This is a private interface which is not accessible in the window object.
  * It is used to define the structure of a file input stream.
  */

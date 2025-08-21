@@ -17,9 +17,6 @@ export interface ModuleInterface {
    */
   recompose(): void;
   createShortcut(): void;
-  /* overload */ createShortcut(
-    title: string | null,
-    icon: string | null
-  ): void;
+  /* overload */ createShortcut(title: string | null, icon: string | null): void;
   hasShortcut(): boolean;
 }

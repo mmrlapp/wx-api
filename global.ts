@@ -1,9 +1,9 @@
-import type { ApplicationInterface } from "./ApplicationInterface";
-import type { FileInputInterface } from "./FileInputInterface";
-import type { FileInterface } from "./FileInterface";
-import type { FileOutputInterface } from "./FileOutputInterface";
-import type { IntentInterface } from "./IntentInterface";
-import type { ModuleInterface } from "./ModuleInterface";
+import type { ApplicationInterface } from "./src/types/ApplicationInterface";
+import type { FileInputInterface } from "./src/types/FileInputInterface";
+import type { FileInterface } from "./src/types/FileInterface";
+import type { FileOutputInterface } from "./src/types/FileOutputInterface";
+import type { IntentInterface } from "./src/types/IntentInterface";
+import type { ModuleInterface } from "./src/types/ModuleInterface";
 
 export {};
 

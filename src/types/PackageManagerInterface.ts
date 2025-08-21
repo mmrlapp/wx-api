@@ -6,7 +6,15 @@ export interface PackageManagerInterface {
   /**
    * Method run heavy operations
    */
-  getApplicationIcon(packageName: string, flags: number, userId: number): FileInputInterfaceStream | null;
+  getApplicationIcon(
+    packageName: string,
+    flags: number,
+    userId: number
+  ): FileInputInterfaceStream | null;
   getInstalledPackages(flags: number, userId: number): string;
-  getApplicationInfo(packageName: string, flags: number, userId: number): WXApplicationInfo;
+  getApplicationInfo(
+    packageName: string,
+    flags: number,
+    userId: number
+  ): WXApplicationInfo;
 }
