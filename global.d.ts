@@ -5,7 +5,7 @@ import type { FileOutputInterface } from "./src/types/FileOutputInterface";
 import type { IntentInterface } from "./src/types/IntentInterface";
 import type { ModuleInterface } from "./src/types/ModuleInterface";
 
-export {};
+export { };
 
 export type ModuleInterfaceToken = `$${string}`;
 export type FileInterfaceToken = `$${string}File`;
@@ -22,5 +22,15 @@ declare global {
     [key: FileInterfaceToken]: FileInterface;
     [key: FileInputInterfaceToken]: FileInputInterface;
     [key: FileOutputInterfaceToken]: FileOutputInterface;
+  }
+
+  interface Document {
+    addMXEventListener?(type: string, handler: (data: any) => void): void
+    removeMXEventListener?(type: string, handler: (data: any) => void): void
+  }
+
+  interface HTMLElement {
+    addMXEventListener?(type: string, handler: (data: any) => void): void
+    removeMXEventListener?(type: string, handler: (data: any) => void): void
   }
 }

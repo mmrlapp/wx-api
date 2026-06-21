@@ -15,11 +15,17 @@ export type WXEventNativeType =
 export type WXEventType =
   | "back"
   | "backbutton" // Cordova compatibility
+  | "keyboardState"
+  | "keyboard"
+  | "keyboard"
+  | "backCancelled"
+  | "backPressed"
+  | "backStarted"
+  | "backProgressed"
   | "resume"
   | "refresh"
   | "pause"
-  | "keyboard"
-  | "insets";
+  | "insets"
 
 export type WXEventDetail<T = any> = {
   type: WXEventNativeType;
